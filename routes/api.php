@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('partners')->group(function () {
+    Route::get('/', App\Http\Controllers\Partners\IndexController::class);
+    Route::post('/', App\Http\Controllers\Partners\StoreController::class);
+    Route::get('/{partner}', App\Http\Controllers\Partners\ShowController::class);
+    Route::patch('/{partner}', App\Http\Controllers\Partners\UpdateController::class);
+    Route::delete('/{partner}', App\Http\Controllers\Partners\DeleteController::class);
+});
