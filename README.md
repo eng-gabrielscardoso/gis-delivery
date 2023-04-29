@@ -1,66 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# GIS Delivery
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is part of a personal initiative to solve some challenges made by companies located in the repository [Backend Challenges](https://github.com/CollabCodeTech/backend-challenges). This challenge, in particular, is proposed by the company Zé Delivery, a Brazilian company in the field of beverage distribution. The challenge can be seen at the link [here](https://github.com/ZXVentures/ze-code-challenges/blob/master/backend.md).
 
-## About Laravel
+Overall, I hope that with these challenges I can improve my fullstack development skills and also address new perspectives and real challenges in the world of development.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Technologies
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The technologies used in the project were the most recent versions of:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* Laravel Sail - https://laravel.com/docs/10.x/sail
+* PHP Pest - https://pestphp.com/
+* Docker and Docker Compose - https://www.docker.com/
+* MySQl - https://mysql.com
+* Visual Studio Code - https://code.visualstudio.com/
+* DBeaver - https://dbeaver.io/
+* Insomnia - https://insomnia.rest/
+* Git - https://git-scm.com/
+* Github And Github CLI
+* Plus, I've used the most recent version of Linux Mint
 
-## Learning Laravel
+Feel free to use any of these technologies or change some for your own preferences.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+This project requires you have installed in your machine the most recent version of Docker and Docker Composer installed and running, so make sure that you have them.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+First of all, clone the repository in your local environment : 
 
-## Laravel Sponsors
+After make the first steps run the following command in the root of project:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```shell
+./vendor/bin/sail up -d
+```
 
-### Premium Partners
+So, your containers were created and running, so you can run the following commands to install deps, run migrations and other important things to make sure that the project will work from top to bottom.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+* Install dependencies:
 
-## Contributing
+```shell
+./vendor/bin/sail composer i
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Run migrations:
 
-## Code of Conduct
+```shell
+./vendor/bin/sail artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Seed database:
 
-## Security Vulnerabilities
+```shell
+./vendor/bin/sail artisan db:seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If all the commands were run successfully then you run some request to the API.
 
-## License
+> Something didn't work properly? Don't worry about it, just take a coffee and open an issue [here](https://github.com/eng-gabrielscardoso/gis-delivery/issues/new)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Author
+
+By contribution to the project:
+
+* Gabriel Santos Cardoso - eng.gabrielscardoso@gmail.com
+
+## Licence
+
+This project is licensed under the MIT licence. See the Licence file for details [here](LICENSE.md).
