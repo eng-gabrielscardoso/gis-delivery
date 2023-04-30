@@ -20,26 +20,46 @@ class IndexControllerTest extends TestCase
     {
         $partners = Partner::factory()->count(3)->create();
 
-        $response = $this->getJson('/api/partners');
+        $request = $this->getJson('/api/partners');
 
-        $response->assertOk();
-        $response->assertJsonCount(1);
+        $request->assertOk();
+
+        $request->assertJsonCount(3, 'data');
 
         foreach ($partners as $partner) {
-            $response->assertJsonFragment([
-                'id' => $partner->public_id,
-                'tradingName' => $partner->trading_name,
-                'ownerName' => $partner->owner_name,
-                'document' => $partner->document,
-                'coverageArea' => [
-                    'type' => $partner->coverage_area['type'],
-                    'coordinates' => $partner->coverage_area['coordinates'],
-                ],
-                'address' => [
-                    'type' => $partner->address['type'],
-                    'coordinates' => $partner->address['coordinates'],
+            $request->assertJsonStructure([
+                'data' => [
+                    '*' => [
+                        'id',
+                        'tradingName',
+                        'ownerName',
+                        'document',
+                        'coverageArea' => [
+                            'type',
+                            'coordinates',
+                        ],
+                        'address' => [
+                            'type',
+                            'coordinates',
+                        ],
+                    ],
                 ],
             ]);
+        }
+
+        foreach ($partners as $partner) {
+            foreach ($partners as $partner) {
+                $request = $this->getJson("/api/partners/{$partner->public_id}");
+
+                $request->assertOk();
+
+                $this->assertEquals($partner->public_id, $request['data']['id']);
+                $this->assertEquals($partner->trading_name, $request['data']['tradingName']);
+                $this->assertEquals($partner->owner_name, $request['data']['ownerName']);
+                $this->assertEquals($partner->document, $request['data']['document']);
+                $this->assertEquals($partner->coverage_area, json_decode(json_encode($request['data']['coverageArea']), true));
+                $this->assertEquals($partner->address, json_decode(json_encode($request['data']['address']), true));
+            }
         }
     }
 }

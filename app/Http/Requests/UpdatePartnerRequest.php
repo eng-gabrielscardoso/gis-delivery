@@ -24,13 +24,11 @@ class UpdatePartnerRequest extends FormRequest
         return [
             'tradingName' => ['sometimes', 'string', 'max:125', 'nullable'],
             'ownerName' => ['sometimes', 'string', 'max:125', 'nullable'],
-            'document' => ['sometimes', 'string', 'max:15', 'nullable'],
-            'coverageArea' => ['sometimes', 'json', 'nullable'],
-            'coverageArea.*.type' => ['sometimes', 'string', 'max:125'],
-            'coverageArea.*.coordinates' => ['sometimes', 'array'],
-            'address' => ['sometimes', 'json', 'nullable'],
-            'address.*.type' => ['sometimes', 'string', 'max:125'],
-            'address.*.coordinates' => ['sometimes', 'array'],
+            'document' => ['sometimes', 'string', 'max:18', 'nullable'],
+            'coverageArea.type' => ['sometimes', 'string', 'max:125'],
+            'coverageArea.coordinates' => ['sometimes', 'array'],
+            'address.type' => ['sometimes', 'string', 'max:125'],
+            'address.coordinates' => ['sometimes', 'array'],
         ];
     }
 }

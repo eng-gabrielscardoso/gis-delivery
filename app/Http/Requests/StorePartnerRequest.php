@@ -25,12 +25,10 @@ class StorePartnerRequest extends FormRequest
             'tradingName' => ['sometimes', 'string', 'max:125'],
             'ownerName' => ['sometimes', 'string', 'max:125'],
             'document' => ['sometimes', 'string', 'max:15'],
-            'coverageArea' => ['sometimes', 'json'],
-            'coverageArea.*.type' => ['sometimes', 'string', 'max:125'],
-            'coverageArea.*.coordinates' => ['sometimes', 'array'],
-            'address' => ['sometimes', 'json'],
-            'address.*.type' => ['sometimes', 'string', 'max:125'],
-            'address.*.coordinates' => ['sometimes', 'array'],
+            'coverageArea.type' => ['sometimes', 'string', 'max:125'],
+            'coverageArea.coordinates' => ['sometimes', 'array'],
+            'address.type' => ['sometimes', 'string', 'max:125'],
+            'address.coordinates' => ['sometimes', 'array'],
         ];
     }
 }
