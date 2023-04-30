@@ -11,7 +11,7 @@ class StorePartnerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class StorePartnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tradingName' => ['sometimes', 'string', 'max:125'],
+            'ownerName' => ['sometimes', 'string', 'max:125'],
+            'document' => ['sometimes', 'string', 'max:15'],
+            'coverageArea' => ['sometimes', 'json'],
+            'coverageArea.*.type' => ['sometimes', 'string', 'max:125'],
+            'coverageArea.*.coordinates' => ['sometimes', 'array'],
+            'address' => ['sometimes', 'json'],
+            'address.*.type' => ['sometimes', 'string', 'max:125'],
+            'address.*.coordinates' => ['sometimes', 'array'],
         ];
     }
 }
