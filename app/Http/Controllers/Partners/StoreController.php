@@ -8,6 +8,7 @@ use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class StoreController extends Controller
 {
@@ -24,10 +25,11 @@ class StoreController extends Controller
             DB::beginTransaction();
 
             $partner = Partner::create([
-                'trading_name' => Arr::get($data, 'tradingName'),
-                'owner_name' => Arr::get($data, 'ownerName'),
+                'public_id' => Str::uuid(),
+                'trading_name' => Arr::get($data, 'trading_name'),
+                'owner_name' => Arr::get($data, 'owner_name'),
                 'document' => Arr::get($data, 'document'),
-                'coverage_area' => Arr::get($data, 'coverageArea'),
+                'coverage_area' => Arr::get($data, 'coverage_area'),
                 'address' => Arr::get($data, 'address'),
             ]);
 

@@ -16,10 +16,10 @@ class PartnerResource extends JsonResource
     {
         return [
             'id' => $this->public_id,
-            'tradingName' => $this->trading_name,
-            'ownerName' => $this->owner_name,
+            'trading_name' => $this->trading_name,
+            'owner_name' => $this->owner_name,
             'document' => $this->document,
-            'coverageArea' => [
+            'coverage_area' => [
                 'type' => $this->coverage_area['type'],
                 'coordinates' => $this->coverage_area['coordinates'],
             ],

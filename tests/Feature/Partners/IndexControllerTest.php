@@ -45,10 +45,10 @@ class IndexControllerTest extends TestCase
                 'data' => [
                     '*' => [
                         'id',
-                        'tradingName',
-                        'ownerName',
+                        'trading_name',
+                        'owner_name',
                         'document',
-                        'coverageArea' => [
+                        'coverage_area' => [
                             'type',
                             'coordinates',
                         ],
@@ -108,10 +108,10 @@ class IndexControllerTest extends TestCase
                 $request->assertOk();
 
                 $this->assertEquals($partner->public_id, $request['data']['id']);
-                $this->assertEquals($partner->trading_name, $request['data']['tradingName']);
-                $this->assertEquals($partner->owner_name, $request['data']['ownerName']);
+                $this->assertEquals($partner->trading_name, $request['data']['trading_name']);
+                $this->assertEquals($partner->owner_name, $request['data']['owner_name']);
                 $this->assertEquals($partner->document, $request['data']['document']);
-                $this->assertEquals($partner->coverage_area, json_decode(json_encode($request['data']['coverageArea']), true));
+                $this->assertEquals($partner->coverage_area, json_decode(json_encode($request['data']['coverage_area']), true));
                 $this->assertEquals($partner->address, json_decode(json_encode($request['data']['address']), true));
             }
         }

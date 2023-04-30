@@ -22,11 +22,11 @@ class StorePartnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tradingName' => ['sometimes', 'string', 'max:125'],
-            'ownerName' => ['sometimes', 'string', 'max:125'],
-            'document' => ['sometimes', 'string', 'max:15'],
-            'coverageArea.type' => ['sometimes', 'string', 'max:125'],
-            'coverageArea.coordinates' => ['sometimes', 'array'],
+            'trading_name' => ['sometimes', 'string', 'max:125'],
+            'owner_name' => ['sometimes', 'string', 'max:125'],
+            'document' => ['sometimes', 'string', 'max:18'],
+            'coverage_area.type' => ['sometimes', 'string', 'max:125'],
+            'coverage_area.coordinates' => ['sometimes', 'array'],
             'address.type' => ['sometimes', 'string', 'max:125'],
             'address.coordinates' => ['sometimes', 'array'],
         ];

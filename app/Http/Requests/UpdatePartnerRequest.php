@@ -22,11 +22,11 @@ class UpdatePartnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tradingName' => ['sometimes', 'string', 'max:125', 'nullable'],
-            'ownerName' => ['sometimes', 'string', 'max:125', 'nullable'],
+            'trading_name' => ['sometimes', 'string', 'max:125', 'nullable'],
+            'owner_name' => ['sometimes', 'string', 'max:125', 'nullable'],
             'document' => ['sometimes', 'string', 'max:18', 'nullable'],
-            'coverageArea.type' => ['sometimes', 'string', 'max:125'],
-            'coverageArea.coordinates' => ['sometimes', 'array'],
+            'coverage_area.type' => ['sometimes', 'string', 'max:125'],
+            'coverage_area.coordinates' => ['sometimes', 'array'],
             'address.type' => ['sometimes', 'string', 'max:125'],
             'address.coordinates' => ['sometimes', 'array'],
         ];

@@ -23,20 +23,20 @@ class UpdateController extends Controller
         try {
             DB::beginTransaction();
 
-            if (Arr::has($data, 'tradingName')) {
-                $partner->trading_name = Arr::get($data, 'tradingName');
+            if (Arr::has($data, 'trading_name')) {
+                $partner->trading_name = Arr::get($data, 'trading_name');
             }
 
-            if (Arr::has($data, 'ownerName')) {
-                $partner->owner_name = Arr::get($data, 'ownerName');
+            if (Arr::has($data, 'owner_name')) {
+                $partner->owner_name = Arr::get($data, 'owner_name');
             }
 
             if (Arr::has($data, 'document')) {
                 $partner->document = Arr::get($data, 'document');
             }
 
-            if (Arr::has($data, 'coverageArea')) {
-                $partner->coverage_area = Arr::get($data, 'coverageArea');
+            if (Arr::has($data, 'coverage_area')) {
+                $partner->coverage_area = Arr::get($data, 'coverage_area');
             }
 
             if (Arr::has($data, 'address')) {

@@ -19,10 +19,10 @@ class UpdateControllerTest extends TestCase
         $partner = Partner::factory()->create();
 
         $updatedData = [
-            'tradingName' => fake()->company(),
-            'ownerName' => fake()->name(),
+            'trading_name' => fake()->company(),
+            'owner_name' => fake()->name(),
             'document' => strval(fake()->numerify('#############/####')),
-            'coverageArea' => [
+            'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
                     [fake()->longitude(), fake()->latitude()],
@@ -51,10 +51,10 @@ class UpdateControllerTest extends TestCase
         $partner = Partner::factory()->create();
 
         $updatedData = [
-            'tradingName' => fake()->company(),
-            'ownerName' => fake()->name(),
+            'trading_name' => fake()->company(),
+            'owner_name' => fake()->name(),
             'document' => strval(fake()->numerify('#############/####')),
-            'coverageArea' => [
+            'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
                     [fake()->longitude(), fake()->latitude()],
@@ -77,10 +77,10 @@ class UpdateControllerTest extends TestCase
         $request->assertJsonStructure([
             'data' => [
                 'id',
-                'tradingName',
-                'ownerName',
+                'trading_name',
+                'owner_name',
                 'document',
-                'coverageArea' => [
+                'coverage_area' => [
                     'type',
                     'coordinates',
                 ],
@@ -100,10 +100,10 @@ class UpdateControllerTest extends TestCase
         $partner = Partner::factory()->create();
 
         $updatedData = [
-            'tradingName' => fake()->company(),
-            'ownerName' => fake()->name(),
+            'trading_name' => fake()->company(),
+            'owner_name' => fake()->name(),
             'document' => strval(fake()->numerify('#############/####')),
-            'coverageArea' => [
+            'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
                     [fake()->longitude(), fake()->latitude()],
@@ -141,10 +141,10 @@ class UpdateControllerTest extends TestCase
         $partner = Partner::factory()->create();
 
         $updatedData = [
-            'tradingName' => fake()->company(),
-            'ownerName' => fake()->name(),
+            'trading_name' => fake()->company(),
+            'owner_name' => fake()->name(),
             'document' => strval(fake()->numerify('#############/####')),
-            'coverageArea' => [
+            'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
                     [fake()->longitude(), fake()->latitude()],
@@ -166,18 +166,18 @@ class UpdateControllerTest extends TestCase
 
         $request->assertJsonFragment([
             'id' => $partner->public_id,
-            'tradingName' => $updatedData['tradingName'],
-            'ownerName' => $updatedData['ownerName'],
+            'trading_name' => $updatedData['trading_name'],
+            'owner_name' => $updatedData['owner_name'],
             'document' => $updatedData['document'],
-            'coverageArea' => $updatedData['coverageArea'],
+            'coverage_area' => $updatedData['coverage_area'],
             'address' => $updatedData['address'],
         ]);
 
         $request->assertJsonMissing([
-            'tradingName' => $partner->trading_name,
-            'ownerName' => $partner->owner_name,
+            'trading_name' => $partner->trading_name,
+            'owner_name' => $partner->owner_name,
             'document' => $partner->document,
-            'coverageArea' => $partner->coverage_area,
+            'coverage_area' => $partner->coverage_area,
             'address' => $partner->address,
         ]);
     }
