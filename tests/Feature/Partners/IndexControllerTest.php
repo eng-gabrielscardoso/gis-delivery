@@ -12,11 +12,19 @@ class IndexControllerTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
-     * Test if the application returns a collection of partners
-     *
-     * @return void
+     * Test if the application returns status 200
      */
-    public function test_the_application_returns_a_collection_of_partners(): void
+    public function test_the_application_returns_status_ok(): void
+    {
+        $request = $this->getJson('/api/partners');
+
+        $request->assertOk();
+    }
+
+    /**
+     * Test if the application returns a valid JSON structure
+     */
+    public function test_the_application_returns_a_valid_json_structure(): void
     {
         $partners = Partner::factory()->count(3)->create();
 
@@ -24,6 +32,12 @@ class IndexControllerTest extends TestCase
 
         $request->assertOk();
 
+        /**
+         * In this case the factory generate 3 partners, so the application will return
+         * a data array that contains the 3 partners
+         *
+         * @author eng-gabrielscardoso
+         */
         $request->assertJsonCount(3, 'data');
 
         foreach ($partners as $partner) {
@@ -46,6 +60,46 @@ class IndexControllerTest extends TestCase
                 ],
             ]);
         }
+    }
+
+    /**
+     * Test if the application returns a correct number of partners
+     */
+    public function test_the_application_returns_a_correct_number_of_partners(): void
+    {
+        Partner::factory()->count(3)->create();
+
+        $request = $this->getJson('/api/partners');
+
+        $request->assertOk();
+
+        /**
+         * In this case the factory generate 3 partners, so the application will return
+         * a data array that contains the 3 partners
+         *
+         * @author eng-gabrielscardoso
+         */
+        $request->assertJsonCount(3, 'data');
+    }
+
+    /**
+     * Test if the application returns a collection of partners
+     */
+    public function test_the_application_returns_a_collection_of_partners(): void
+    {
+        $partners = Partner::factory()->count(3)->create();
+
+        $request = $this->getJson('/api/partners');
+
+        $request->assertOk();
+
+        /**
+         * In this case the factory generate 3 partners, so the application will return
+         * a data array that contains the 3 partners
+         *
+         * @author eng-gabrielscardoso
+         */
+        $request->assertJsonCount(3, 'data');
 
         foreach ($partners as $partner) {
             foreach ($partners as $partner) {
