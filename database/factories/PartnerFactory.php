@@ -18,14 +18,14 @@ class PartnerFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
 
         return [
             'public_id' => fake()->uuid(),
             'trading_name' => fake()->company(),
             'owner_name' => fake()->name(),
-            'document' => fake()->numberBetween(100000000000, 10000000000000000),
+            'document' => strval(fake()->numberBetween(100000000000, 10000000000000000)),
             'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [[[
