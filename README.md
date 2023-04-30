@@ -23,9 +23,9 @@ Feel free to use any of these technologies or change some for your own preferenc
 
 ## Installation
 
-This project requires you have installed in your machine the most recent version of Docker and Docker Composer installed and running, so make sure that you have them.
+This project requires you have installed in your machine the most recent version of Docker and  Docker Composer installed and running, so make sure that you have them.
 
-First of all, clone the repository in your local environment : 
+First of all, clone the repository in your local environment. Copy the `.env.example` file as `.env` and set the environment variables that were blank such as `DB_USERNAME` and `DB_PASSWORD`. After it you will have a fresh install of project, but not will work before have the vendors installed locally. So, you will need to run `docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd):/var/www/html" -w /var/www/html laravelsail/php82-composer:latest composer install --ignore-platform-reqs` to install the Sail Deps and then, if everything runs fine, you will be able to up the containers.
 
 After make the first steps run the following command in the root of project:
 
@@ -51,6 +51,18 @@ So, your containers were created and running, so you can run the following comma
 
 ```shell
 ./vendor/bin/sail artisan db:seed
+```
+
+* Generate your own local API key
+
+```shell
+./vendor/bin/sail artisan key:generate
+```
+
+* This step is optional, but recommended, to generate your JWT secret
+
+```shell
+./vendor/bin/sail artisan jwt:secret
 ```
 
 If all the commands were run successfully then you run some request to the API.
