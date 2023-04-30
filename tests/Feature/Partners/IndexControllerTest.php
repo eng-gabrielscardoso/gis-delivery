@@ -13,6 +13,8 @@ class IndexControllerTest extends TestCase
 
     /**
      * Test if the application returns a collection of partners
+     *
+     * @return void
      */
     public function test_the_application_returns_a_collection_of_partners(): void
     {
