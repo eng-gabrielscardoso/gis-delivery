@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('delivery')->group(function () {
+    Route::get('/', App\Http\Controllers\Delivery\IndexController::class);
+});
+
 Route::prefix('partners')->group(function () {
     Route::get('/', App\Http\Controllers\Partners\IndexController::class);
     Route::post('/', App\Http\Controllers\Partners\StoreController::class);
