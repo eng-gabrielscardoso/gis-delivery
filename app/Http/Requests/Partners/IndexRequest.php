@@ -24,6 +24,9 @@ class IndexRequest extends FormRequest
         return [
             'page' => ['sometimes', 'required', 'integer', 'min:1'],
             'pageSize' => ['sometimes', 'required', 'integer', 'min:1', 'max:50'],
+            'filter[trading_name]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
+            'filter[owner_name]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
+            'filter[document]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
             'filter[address]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
             'filter[coverage_area]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
             'sort' => ['sometimes', 'nullable', 'string'],

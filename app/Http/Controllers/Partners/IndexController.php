@@ -22,6 +22,9 @@ class IndexController extends Controller
 
         $query = QueryBuilder::for(Partner::class)
             ->allowedFilters([
+                AllowedFilter::exact('trading_name'),
+                AllowedFilter::exact('owner_name'),
+                AllowedFilter::exact('document'),
                 AllowedFilter::scope('address'),
                 AllowedFilter::scope('coverage_area'),
             ])

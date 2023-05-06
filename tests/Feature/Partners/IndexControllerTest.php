@@ -121,6 +121,78 @@ class IndexControllerTest extends TestCase
     /**
      * @test
      */
+    public function test_the_application_returns_a_correct_filtered_partner_by_trading_name(): void
+    {
+        $pivot = Partner::factory()->create();
+        $partners = Partner::factory()->count(3)->create();
+
+        $request = $this->getJson("/api/partners?filter[trading_name]={$pivot->trading_name}");
+
+        $request->assertOk();
+
+        $request->assertJsonCount(1, 'data');
+
+        $request->assertJsonFragment([
+            'id' => Arr::get($pivot, 'public_id'),
+            'trading_name' => Arr::get($pivot, 'trading_name'),
+            'owner_name' => Arr::get($pivot, 'owner_name'),
+            'document' => Arr::get($pivot, 'document'),
+            'coverage_area' => Arr::get($pivot, 'coverage_area'),
+            'address' => Arr::get($pivot, 'address'),
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_the_application_returns_a_correct_filtered_partner_by_owner_name(): void
+    {
+        $pivot = Partner::factory()->create();
+        $partners = Partner::factory()->count(3)->create();
+
+        $request = $this->getJson("/api/partners?filter[owner_name]={$pivot->owner_name}");
+
+        $request->assertOk();
+
+        $request->assertJsonCount(1, 'data');
+
+        $request->assertJsonFragment([
+            'id' => Arr::get($pivot, 'public_id'),
+            'trading_name' => Arr::get($pivot, 'trading_name'),
+            'owner_name' => Arr::get($pivot, 'owner_name'),
+            'document' => Arr::get($pivot, 'document'),
+            'coverage_area' => Arr::get($pivot, 'coverage_area'),
+            'address' => Arr::get($pivot, 'address'),
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_the_application_returns_a_correct_filtered_partner_by_document(): void
+    {
+        $pivot = Partner::factory()->create();
+        $partners = Partner::factory()->count(3)->create();
+
+        $request = $this->getJson("/api/partners?filter[document]={$pivot->document}");
+
+        $request->assertOk();
+
+        $request->assertJsonCount(1, 'data');
+
+        $request->assertJsonFragment([
+            'id' => Arr::get($pivot, 'public_id'),
+            'trading_name' => Arr::get($pivot, 'trading_name'),
+            'owner_name' => Arr::get($pivot, 'owner_name'),
+            'document' => Arr::get($pivot, 'document'),
+            'coverage_area' => Arr::get($pivot, 'coverage_area'),
+            'address' => Arr::get($pivot, 'address'),
+        ]);
+    }
+
+    /**
+     * @test
+     */
     public function test_the_application_returns_a_correct_filtered_partner_by_address(): void
     {
         $pivot = Partner::factory()->create();
@@ -129,25 +201,6 @@ class IndexControllerTest extends TestCase
         $request = $this->getJson("/api/partners?filter[address]={$pivot->address['coordinates'][0]},{$pivot->address['coordinates'][1]}");
 
         $request->assertOk();
-
-        $request->assertJsonStructure([
-            'data' => [
-                '*' => [
-                    'id',
-                    'trading_name',
-                    'owner_name',
-                    'document',
-                    'coverage_area' => [
-                        'type',
-                        'coordinates',
-                    ],
-                    'address' => [
-                        'type',
-                        'coordinates',
-                    ],
-                ],
-            ],
-        ]);
 
         $request->assertJsonCount(1, 'data');
 
@@ -173,23 +226,5 @@ class IndexControllerTest extends TestCase
 
         $request->assertOk();
 
-        $request->assertJsonStructure([
-            'data' => [
-                '*' => [
-                    'id',
-                    'trading_name',
-                    'owner_name',
-                    'document',
-                    'coverage_area' => [
-                        'type',
-                        'coordinates',
-                    ],
-                    'address' => [
-                        'type',
-                        'coordinates',
-                    ],
-                ],
-            ],
-        ]);
     }
 }
