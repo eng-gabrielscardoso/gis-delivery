@@ -14,5 +14,8 @@ class DeleteController extends Controller
      */
     public function __invoke(Partner $partner)
     {
+        $partner->delete();
+
+        return response()->noContent();
     }
 }
