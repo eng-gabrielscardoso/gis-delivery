@@ -14,7 +14,7 @@ class StoreControllerTest extends TestCase
     /**
      * @test
      */
-    public function test_the_application_returns_status_ok(): void
+    public function test_the_application_returns_status_created(): void
     {
         $partner = [
             'trading_name' => fake()->company(),
