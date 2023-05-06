@@ -18,6 +18,9 @@ class PartnerFactory extends Factory
      */
     public function definition(): array
     {
+        $polygonA = [fake()->longitude(), fake()->latitude()];
+        $polygonB = [fake()->longitude(), fake()->latitude()];
+        $polygonC = [fake()->longitude(), fake()->latitude()];
 
         return [
             'public_id' => fake()->uuid(),
@@ -27,11 +30,34 @@ class PartnerFactory extends Factory
             'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
+                    [
+                        [
+                            $polygonA,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonA,
+                        ],
+                    ],
+                    [
+                        [
+                            $polygonB,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonB,
+                        ],
+                        [
+                            $polygonC,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonC,
+                        ],
+                    ],
                 ],
             ],
             'address' => [
