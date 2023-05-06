@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Partners;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePartnerRequest;
+use App\Http\Requests\Partners\StoreRequest;
 use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
 use Illuminate\Support\Arr;
@@ -17,7 +17,7 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(StorePartnerRequest $request)
+    public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
 

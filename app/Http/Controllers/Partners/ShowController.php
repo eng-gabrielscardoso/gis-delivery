@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partners;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Partners\ShowRequest;
 use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
 
@@ -13,7 +14,7 @@ class ShowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Partner $partner)
+    public function __invoke(ShowRequest $request, Partner $partner)
     {
         return new PartnerResource($partner);
     }

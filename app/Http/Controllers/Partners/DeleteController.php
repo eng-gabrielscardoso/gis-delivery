@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partners;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Partners\DeleteRequest;
 use App\Models\Partner;
 
 class DeleteController extends Controller
@@ -12,7 +13,7 @@ class DeleteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Partner $partner)
+    public function __invoke(DeleteRequest $request, Partner $partner)
     {
         $partner->delete();
 

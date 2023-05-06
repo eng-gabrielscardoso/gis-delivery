@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Partners;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdatePartnerRequest;
+use App\Http\Requests\Partners\UpdateRequest;
 use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
 use Illuminate\Support\Arr;
@@ -16,7 +16,7 @@ class UpdateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(UpdatePartnerRequest $request, Partner $partner)
+    public function __invoke(UpdateRequest $request, Partner $partner)
     {
         $data = $request->validated();
 
