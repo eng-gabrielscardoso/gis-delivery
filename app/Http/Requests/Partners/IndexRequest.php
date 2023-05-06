@@ -22,7 +22,11 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'page' => ['sometimes', 'required', 'integer', 'min:1'],
+            'pageSize' => ['sometimes', 'required', 'integer', 'min:1', 'max:50'],
+            'filter[address]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
+            'filter[coverage_area]' => ['sometimes', 'nullable', 'string', 'htmlclean'],
+            'sort' => ['sometimes', 'nullable', 'string'],
         ];
     }
 }

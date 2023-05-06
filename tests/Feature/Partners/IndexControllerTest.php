@@ -5,6 +5,7 @@ namespace Tests\Feature\Partners;
 use App\Models\Partner;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class IndexControllerTest extends TestCase
@@ -115,5 +116,80 @@ class IndexControllerTest extends TestCase
                 $this->assertEquals($partner->address, json_decode(json_encode($request['data']['address']), true));
             }
         }
+    }
+
+    /**
+     * @test
+     */
+    public function test_the_application_returns_a_correct_filtered_partner_by_address(): void
+    {
+        $pivot = Partner::factory()->create();
+        $partners = Partner::factory()->count(3)->create();
+
+        $request = $this->getJson("/api/partners?filter[address]={$pivot->address['coordinates'][0]},{$pivot->address['coordinates'][1]}");
+
+        $request->assertOk();
+
+        $request->assertJsonStructure([
+            'data' => [
+                '*' => [
+                    'id',
+                    'trading_name',
+                    'owner_name',
+                    'document',
+                    'coverage_area' => [
+                        'type',
+                        'coordinates',
+                    ],
+                    'address' => [
+                        'type',
+                        'coordinates',
+                    ],
+                ],
+            ],
+        ]);
+
+        $request->assertJsonCount(1, 'data');
+
+        $request->assertJsonFragment([
+            'id' => Arr::get($pivot, 'public_id'),
+            'trading_name' => Arr::get($pivot, 'trading_name'),
+            'owner_name' => Arr::get($pivot, 'owner_name'),
+            'document' => Arr::get($pivot, 'document'),
+            'coverage_area' => Arr::get($pivot, 'coverage_area'),
+            'address' => Arr::get($pivot, 'address'),
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function test_the_application_returns_filtered_partners_by_coverage_area(): void
+    {
+        $pivot = Partner::factory()->create();
+        $partners = Partner::factory()->count(9)->create();
+
+        $request = $this->getJson("/api/partners?filter[coverage_area]={$pivot->address['coordinates'][0]},{$pivot->address['coordinates'][1]}");
+
+        $request->assertOk();
+
+        $request->assertJsonStructure([
+            'data' => [
+                '*' => [
+                    'id',
+                    'trading_name',
+                    'owner_name',
+                    'document',
+                    'coverage_area' => [
+                        'type',
+                        'coordinates',
+                    ],
+                    'address' => [
+                        'type',
+                        'coordinates',
+                    ],
+                ],
+            ],
+        ]);
     }
 }

@@ -16,6 +16,8 @@ class ShowController extends Controller
      */
     public function __invoke(ShowRequest $request, Partner $partner)
     {
+        $data = $request->validated();
+
         return new PartnerResource($partner);
     }
 }

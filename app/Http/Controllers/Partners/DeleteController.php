@@ -15,6 +15,8 @@ class DeleteController extends Controller
      */
     public function __invoke(DeleteRequest $request, Partner $partner)
     {
+        $data = $request->validated();
+
         $partner->delete();
 
         return response()->noContent();

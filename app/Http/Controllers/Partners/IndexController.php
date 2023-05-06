@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Partners\IndexRequest;
 use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class IndexController extends Controller
 {
@@ -16,6 +18,18 @@ class IndexController extends Controller
      */
     public function __invoke(IndexRequest $request)
     {
-        return PartnerResource::collection(Partner::all());
+        $data = $request->validated();
+
+        $query = QueryBuilder::for(Partner::class)
+            ->allowedFilters([
+                AllowedFilter::scope('address'),
+                AllowedFilter::scope('coverage_area'),
+            ])
+            ->allowedSorts('trading_name', 'owner_name', 'address', 'created_at', 'updated_at')
+            ->defaultSort('address');
+
+        $partners = $query->paginate((int) $request->input('pageSize', 12))->withQueryString();
+
+        return PartnerResource::collection($partners);
     }
 }
