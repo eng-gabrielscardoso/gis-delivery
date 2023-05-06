@@ -4,6 +4,7 @@ namespace Tests\Feature\Partners;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class StoreControllerTest extends TestCase
@@ -37,7 +38,7 @@ class StoreControllerTest extends TestCase
 
         $request = $this->postJson('/api/partners', $partner);
 
-        $request->assertOk();
+        $request->assertCreated();
     }
 
     /**
@@ -67,7 +68,7 @@ class StoreControllerTest extends TestCase
 
         $request = $this->postJson('/api/partners', $partner);
 
-        $request->assertOk();
+        $request->assertCreated();
 
         $request->assertJsonStructure([
             'data' => [
@@ -114,7 +115,7 @@ class StoreControllerTest extends TestCase
 
         $request = $this->postJson('/api/partners', $partner);
 
-        $request->assertOk();
+        $request->assertCreated();
 
         /**
          * In this case the partner factory generate only one partner that will be plain send
@@ -153,15 +154,15 @@ class StoreControllerTest extends TestCase
 
         $request = $this->postJson('/api/partners', $partner);
 
-        $request->assertOk();
+        $request->assertCreated();
 
         $request->assertJsonFragment([
-            // 'id' => $partner->public_id,
-            'trading_name' => $partner['trading_name'],
-            'owner_name' => $partner['owner_name'],
-            'document' => $partner['document'],
-            'coverage_area' => $partner['coverage_area'],
-            'address' => $partner['address'],
+            'id' => Arr::get($request['data'], 'id'),
+            'trading_name' => Arr::get($partner, 'trading_name'),
+            'owner_name' => Arr::get($partner, 'owner_name'),
+            'document' => Arr::get($partner, 'document'),
+            'coverage_area' => Arr::get($partner, 'coverage_area'),
+            'address' => Arr::get($partner, 'address'),
         ]);
     }
 }

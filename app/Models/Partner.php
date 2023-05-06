@@ -15,6 +15,7 @@ class Partner extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'public_id',
         'trading_name',
         'owner_name',
         'document',
