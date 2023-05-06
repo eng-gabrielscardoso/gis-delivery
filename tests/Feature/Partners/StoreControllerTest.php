@@ -16,6 +16,10 @@ class StoreControllerTest extends TestCase
      */
     public function test_the_application_returns_status_created(): void
     {
+        $polygonA = [fake()->longitude(), fake()->latitude()];
+        $polygonB = [fake()->longitude(), fake()->latitude()];
+        $polygonC = [fake()->longitude(), fake()->latitude()];
+
         $partner = [
             'trading_name' => fake()->company(),
             'owner_name' => fake()->name(),
@@ -23,11 +27,34 @@ class StoreControllerTest extends TestCase
             'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
+                    [
+                        [
+                            $polygonA,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonA,
+                        ],
+                    ],
+                    [
+                        [
+                            $polygonB,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonB,
+                        ],
+                        [
+                            $polygonC,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonC,
+                        ],
+                    ],
                 ],
             ],
             'address' => [
@@ -46,6 +73,10 @@ class StoreControllerTest extends TestCase
      */
     public function test_the_application_returns_a_valid_json_structure(): void
     {
+        $polygonA = [fake()->longitude(), fake()->latitude()];
+        $polygonB = [fake()->longitude(), fake()->latitude()];
+        $polygonC = [fake()->longitude(), fake()->latitude()];
+
         $partner = [
             'trading_name' => fake()->company(),
             'owner_name' => fake()->name(),
@@ -53,11 +84,34 @@ class StoreControllerTest extends TestCase
             'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
+                    [
+                        [
+                            $polygonA,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonA,
+                        ],
+                    ],
+                    [
+                        [
+                            $polygonB,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonB,
+                        ],
+                        [
+                            $polygonC,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonC,
+                        ],
+                    ],
                 ],
             ],
             'address' => [
@@ -93,6 +147,10 @@ class StoreControllerTest extends TestCase
      */
     public function test_the_application_returns_a_correct_number_of_partners(): void
     {
+        $polygonA = [fake()->longitude(), fake()->latitude()];
+        $polygonB = [fake()->longitude(), fake()->latitude()];
+        $polygonC = [fake()->longitude(), fake()->latitude()];
+
         $partner = [
             'trading_name' => fake()->company(),
             'owner_name' => fake()->name(),
@@ -100,11 +158,34 @@ class StoreControllerTest extends TestCase
             'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
+                    [
+                        [
+                            $polygonA,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonA,
+                        ],
+                    ],
+                    [
+                        [
+                            $polygonB,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonB,
+                        ],
+                        [
+                            $polygonC,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonC,
+                        ],
+                    ],
                 ],
             ],
             'address' => [
@@ -132,6 +213,10 @@ class StoreControllerTest extends TestCase
      */
     public function test_the_application_returns_a_new_partner(): void
     {
+        $polygonA = [fake()->longitude(), fake()->latitude()];
+        $polygonB = [fake()->longitude(), fake()->latitude()];
+        $polygonC = [fake()->longitude(), fake()->latitude()];
+
         $partner = [
             'trading_name' => fake()->company(),
             'owner_name' => fake()->name(),
@@ -139,11 +224,34 @@ class StoreControllerTest extends TestCase
             'coverage_area' => [
                 'type' => 'MultiPolygon',
                 'coordinates' => [
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
-                    [fake()->longitude(), fake()->latitude()],
+                    [
+                        [
+                            $polygonA,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonA,
+                        ],
+                    ],
+                    [
+                        [
+                            $polygonB,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonB,
+                        ],
+                        [
+                            $polygonC,
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            [fake()->longitude(), fake()->latitude()],
+                            $polygonC,
+                        ],
+                    ],
                 ],
             ],
             'address' => [

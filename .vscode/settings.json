@@ -4,6 +4,7 @@
     "geokit",
     "htmlclean",
     "Laravel",
+    "numerify",
     "Spatie"
   ]
 }
