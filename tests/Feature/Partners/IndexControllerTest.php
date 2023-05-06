@@ -12,7 +12,7 @@ class IndexControllerTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
-     * Test if the application returns status 200
+     * @test
      */
     public function test_the_application_returns_status_ok(): void
     {
@@ -22,7 +22,7 @@ class IndexControllerTest extends TestCase
     }
 
     /**
-     * Test if the application returns a valid JSON structure
+     * @test
      */
     public function test_the_application_returns_a_valid_json_structure(): void
     {
@@ -63,7 +63,7 @@ class IndexControllerTest extends TestCase
     }
 
     /**
-     * Test if the application returns a correct number of partners
+     * @test
      */
     public function test_the_application_returns_a_correct_number_of_partners(): void
     {
@@ -83,7 +83,7 @@ class IndexControllerTest extends TestCase
     }
 
     /**
-     * Test if the application returns a collection of partners
+     * @test
      */
     public function test_the_application_returns_a_collection_of_partners(): void
     {

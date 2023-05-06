@@ -12,7 +12,7 @@ class UpdateControllerTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
-     * Test if the application returns status 200
+     * @test
      */
     public function test_the_application_returns_status_ok(): void
     {
@@ -44,7 +44,7 @@ class UpdateControllerTest extends TestCase
     }
 
     /**
-     * Test if the application returns a valid JSON structure
+     * @test
      */
     public function test_the_application_returns_a_valid_json_structure(): void
     {
@@ -93,7 +93,7 @@ class UpdateControllerTest extends TestCase
     }
 
     /**
-     * Test if the application returns a correct number of partners
+     * @test
      */
     public function test_the_application_returns_a_correct_number_of_partners(): void
     {
@@ -134,7 +134,7 @@ class UpdateControllerTest extends TestCase
     }
 
     /**
-     * Test if the application returns an updated partner
+     * @test
      */
     public function test_the_application_returns_a_updated_partner(): void
     {
