@@ -16,8 +16,8 @@ The technologies used in the project were the most recent versions of:
 * DBeaver - https://dbeaver.io/
 * Insomnia - https://insomnia.rest/
 * Git - https://git-scm.com/
-* Github And Github CLI
-* Plus, I've used the most recent version of Linux Mint
+* Github And Github CLI - https://cli.github.com/
+* Plus, I've used the most recent version of [Linux Mint](https://linuxmint.com/) and [GeoJSON IO](http://geojson.io/) to test my [GEOJSONs](https://en.wikipedia.org/wiki/GeoJSON)
 
 Feel free to use any of these technologies or change some for your own preferences.
 
